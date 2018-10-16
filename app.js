@@ -9,6 +9,12 @@ const app = express();
 app.engine('html',require('express-art-template'));
 // 处理静态资源
 
+app.use('./node_modules',express.static('./node_modules'));
+app.use('/public',express.static('./public'));
+// 配置body-parser
+app.use(bodyParser.urlencoded({
+    extended:false
+}));
 
 
 
@@ -19,4 +25,4 @@ app.use(router);
 // 4绑定端口
 app.listen(12347,() => {
     console.log('run it');
-})
+});
